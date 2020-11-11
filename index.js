@@ -1,19 +1,24 @@
 const express = require('express')
-const app = express()
+const app = express();
+const cors = require('cors');
 const port = 5000
+const conectarDB = require('./config/db');
+
+//* Express middlewares
+app.use(express.urlencoded({extended: true}));
+app.use(express.json({extended: true}));
+app.use(cors());
+//! CONECCCION CON BASE DE DATOS
+conectarDB();
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
-})
-
-app.post('/pedirClave', (req, res)=>{
-    console.log(req.body);
-    res.status(200).json({
-     msg: 'Hola!',
-     resultado: "Esta todo bien"
-    })
 });
+
+//* RUTAS DE API
+app.use('/api/usuarios', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
-})
+});
