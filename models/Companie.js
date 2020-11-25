@@ -10,7 +10,7 @@ const CompanieSchema = mongoose.Schema({
         required: true
     },
     cuitCompanie:{
-        type: Number,
+        type: String,
         required: true,
         trim: true
     },

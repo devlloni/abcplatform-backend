@@ -11,7 +11,7 @@ exports.cargarCompania = async ( req, res ) => {
     //     });
     // }
     console.log(req.body);
-    const {
+    let {
         razonSocial,
         fantasieName,
         cuitCompanie,
@@ -42,6 +42,40 @@ exports.cargarCompania = async ( req, res ) => {
     } catch (error) {
         return res.status(400).json({
             msg: 'Error',
+            error: error
+        })
+    }
+}
+
+exports.mostrarCompanias = async ( req, res ) => {
+    try {
+        const companias = await Companie.find({});
+        res.status(200).json(companias);
+    } catch (error) {
+        res.status(400).json({msg: 'Error', error: error})
+    }
+}
+
+exports.eliminarCompania = async (req, res)=> {
+    if(!req.body.id){
+        return res.status(403).json({
+            msg: 'No existe esa ID o no es una ID válida.'
+        });
+    }
+    try {
+        let companie =  await Companie.findById(req.body.id);
+        if(!companie){
+            return res.status(403).json({
+                msg: 'No existe esa compañía'
+            });
+        }
+        await Companie.findOneAndRemove({_id: req.body.id});
+        res.status(200).json({
+            msg: `Compañía ID(${req.body.id}) eliminada.`
+        })
+    } catch (error) {
+        res.status(400).json({
+            msg: 'Ocurrió un error inesperado.',
             error: error
         })
     }

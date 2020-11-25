@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 app.use('/api/usuarios', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/companias', require('./routes/companie'));
+app.use('/api/empleados', require('./routes/empleados'));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

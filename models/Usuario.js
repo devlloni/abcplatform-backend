@@ -43,7 +43,7 @@ const UsuarioSchema = mongoose.Schema({
         trim: false
     },
     cuil: {
-        type: Number,
+        type: String,
         // required: true,
         trim: true
     },
@@ -51,6 +51,10 @@ const UsuarioSchema = mongoose.Schema({
         type: Number,
         // required: false,
         trim: true
+    },
+    compania: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Companie'
     }
 });
 
