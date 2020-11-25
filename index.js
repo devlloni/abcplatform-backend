@@ -14,7 +14,7 @@ conectarDB();
 app.get('/', (req, res) => {
   res.send('Hello World!')
 });
-
+ 
 //* RUTAS DE API
 app.use('/api/usuarios', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
