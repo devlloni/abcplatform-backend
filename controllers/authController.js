@@ -37,7 +37,7 @@ exports.autenticarUsuario = async ( req, res ) => {
         }, (error, token)=> {
             if(error) throw error;
             //Mensaje de confirmacion
-            res.status(200).json({token})
+            res.status(200).json({token, msg: '¡Exito!'})
         })
     } catch (error) {
         console.log(error);
