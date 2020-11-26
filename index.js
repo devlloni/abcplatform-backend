@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 const cors = require('cors');
-const port = 5005
+const PORT = process.env.PORT || 5005;
 const conectarDB = require('./config/db');
 
 //* Express middlewares
@@ -21,6 +21,6 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/companias', require('./routes/companie'));
 app.use('/api/empleados', require('./routes/empleados'));
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
 });
