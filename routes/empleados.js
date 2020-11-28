@@ -9,4 +9,9 @@ router.post('/',
     empleadoController.crearEmpleado
 );
 
+router.post('/delete',
+    auth,
+    empleadoController.borrarEmpleado
+);
+
 module.exports = router;

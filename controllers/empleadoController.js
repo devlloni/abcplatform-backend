@@ -31,3 +31,30 @@ exports.crearEmpleado = async (req, res) =>{
         })
     }
 }
+
+exports.borrarEmpleado = async ( req, res ) => {
+    const { id } = req.body;
+    if(!id){
+        return res.status(400).json({
+            msg: 'Invalid query ID'
+        });
+    }
+    let empleado = Usuario.findById(id);
+    if(!empleado){
+        return res.status(403).json({
+            msg: 'No existe ese empleado'
+        });
+    }
+    try {
+        await Usuario.findOneAndDelete({_id: id});
+        return res.status(200).json({
+            msg: `Empleado ID(${id}) eliminado.`
+        });
+        
+    } catch (error) {
+        res.status(404).json({
+            msg: 'Ocurrió un error inesperado.',
+            error: error
+        })
+    }
+}
