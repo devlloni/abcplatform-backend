@@ -24,7 +24,10 @@ exports.autenticarUsuario = async ( req, res ) => {
         //Revisar password
         const passwordCorrecto = await bcryptjs.compare(password, usuario.password);
         if(!passwordCorrecto){
-            return res.status(400).json({msg: 'Contraseña incorrecta'});
+            // return res.status(400).json({msg: 'Contraseña incorrecta'});
+            return res.status(200).json({
+                msg: 'Contraseña incorrecta'
+            });
         }
         //Si todo es correcto entonces crea y firma el JWT.-
         const payload = {

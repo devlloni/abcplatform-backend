@@ -31,7 +31,6 @@ exports.cargarCompania = async ( req, res ) => {
                 msg: 'Compañía ya registrada bajo mismo CUIT.'
             });
         }
-        console.log('siguiendo x aca')
         companie = new Companie(req.body);
         await companie.save();
         res.status(200).json({

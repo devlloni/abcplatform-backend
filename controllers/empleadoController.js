@@ -15,6 +15,7 @@ exports.crearEmpleado = async (req, res) =>{
     try{
         const insert = async ( ) => {
             usuario = new Usuario(req.body);
+            usuario.createdAt = new Date();
             const salt = await bcryptjs.genSalt(10);
             usuario.password = await bcryptjs.hash(password, salt);
             usuario.save();

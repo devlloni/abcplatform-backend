@@ -55,6 +55,9 @@ const UsuarioSchema = mongoose.Schema({
     compania: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Companie'
+    },
+    createdAt: {
+        type: Date
     }
 });
 
