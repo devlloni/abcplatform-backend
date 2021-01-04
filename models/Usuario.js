@@ -9,7 +9,6 @@ const UsuarioSchema = mongoose.Schema({
     },
     password:{
         type: String,
-        required: true,
         trim: true
     },
     administrador: {
@@ -58,6 +57,23 @@ const UsuarioSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date
+    },
+    fechaIngreso: {
+        type: Date
+    },
+    branchoffice: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Branchoffice'
+    },
+    lugar: {
+        type: String
+    },
+    sector: {
+        type: String
+    },
+    userRole:{
+        type: mongoose.Types.ObjectId,
+        ref: 'Role'
     }
 });
 

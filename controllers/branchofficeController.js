@@ -43,3 +43,23 @@ exports.mostrarBranchoffices = async (req, res) => {
         })
     }
 }
+
+exports.editarSucursal = async ( req, res ) => {
+    if(!req.body._id){
+        return res.status(403).json({
+            msg: 'Forbidden'
+        });
+    }
+    try {
+        let resp = await Branchoffice.findByIdAndUpdate(req.body._id, req.body);
+        return res.status(200).json({
+            msg: 'ok',
+            branchoffice: resp
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({
+            msg: 'error'
+        });
+    }
+}

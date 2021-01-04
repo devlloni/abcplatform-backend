@@ -59,3 +59,17 @@ exports.borrarEmpleado = async ( req, res ) => {
         })
     }
 }
+
+exports.editarEmpleado = async (req, res) => {
+    // console.log(req.body);
+    if(!req.body._id){
+        return res.status(403).json({
+            msg: 'Forbidden'
+        });
+    }
+    let resp = await Usuario.findByIdAndUpdate(req.body._id,  req.body);
+    return res.status(200).json({
+        msg: 'ok',
+        resp: resp
+    });
+}

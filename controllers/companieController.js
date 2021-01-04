@@ -79,3 +79,16 @@ exports.eliminarCompania = async (req, res)=> {
         })
     }
 }
+
+exports.editarCompania = async (req, res) => {
+    if(!req.body._id){
+        return res.status(403).json({
+            msg: 'Forbidden'
+        });
+    }
+    let resp = await Companie.findByIdAndUpdate(req.body._id, req.body);
+    return res.status(200).json({
+        msg: 'ok',
+        compania: resp
+    });
+}   

@@ -23,4 +23,9 @@ router.get('/',
     branchofficeController.mostrarBranchoffices
 );
 
+router.post('/update', 
+    auth, 
+    branchofficeController.editarSucursal
+);
+
 module.exports = router;

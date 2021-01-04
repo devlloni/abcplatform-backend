@@ -29,4 +29,9 @@ router.post('/delete',
     companieController.eliminarCompania
 );
 
+router.post('/update',
+    auth,
+    companieController.editarCompania
+);
+
 module.exports = router;

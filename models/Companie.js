@@ -41,8 +41,12 @@ const CompanieSchema = mongoose.Schema({
         required: true
     },
     artCompanie:{
-        type: Number,
+        type: String,
         trim: true,
+        required: true
+    },
+    nroContratoCompanie:{
+        type: Number,
         required: true
     }
 })

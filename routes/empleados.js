@@ -14,4 +14,9 @@ router.post('/delete',
     empleadoController.borrarEmpleado
 );
 
+router.post('/update',
+    auth,
+    empleadoController.editarEmpleado
+);
+
 module.exports = router;
