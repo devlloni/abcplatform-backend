@@ -61,13 +61,6 @@ exports.crearUsuario = async (req, res) => {
     //extraer email  y password
     const {email, password, nombre, apellido, administrador} = req.body;
 
-    // if(!email || !password || !nombre || apellido.length < 1){
-    //     console.log('Para registro, envíado: '+ JSON.stringify(req.body));
-    //     return res.status(400).json({
-    //         msg: 'Error, inserte todos los datos'
-    //     });
-    // }
-
     try {
         let usuario = await Usuario.findOne({ email });
         if(usuario){

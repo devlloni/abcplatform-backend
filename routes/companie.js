@@ -29,4 +29,20 @@ router.post('/delete',
     companieController.eliminarCompania
 );
 
+router.post('/update',
+    auth,
+    companieController.editarCompania
+);
+
+//Sectores, lugares, y puestos.
+
+router.get('/sectores',
+    auth,
+    companieController.mostrarSectores
+);
+router.post('/sectores',
+    auth,
+    companieController.cargarSector
+);
+
 module.exports = router;

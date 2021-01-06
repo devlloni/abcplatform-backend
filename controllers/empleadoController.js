@@ -15,6 +15,7 @@ exports.crearEmpleado = async (req, res) =>{
     try{
         const insert = async ( ) => {
             usuario = new Usuario(req.body);
+            usuario.createdAt = new Date();
             const salt = await bcryptjs.genSalt(10);
             usuario.password = await bcryptjs.hash(password, salt);
             usuario.save();
@@ -57,4 +58,18 @@ exports.borrarEmpleado = async ( req, res ) => {
             error: error
         })
     }
+}
+
+exports.editarEmpleado = async (req, res) => {
+    // console.log(req.body);
+    if(!req.body._id){
+        return res.status(403).json({
+            msg: 'Forbidden'
+        });
+    }
+    let resp = await Usuario.findByIdAndUpdate(req.body._id,  req.body);
+    return res.status(200).json({
+        msg: 'ok',
+        resp: resp
+    });
 }
