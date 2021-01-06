@@ -1,16 +1,11 @@
 const Companie = require('../models/Companie');
+const SectorTrabajo = require('../models/sectorTrabajo');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 exports.cargarCompania = async ( req, res ) => {
     //Revisa si hay errores
     const errors = validationResult(req);
-    // if(!errors.isEmpty()){
-    //     return res.status(400).json({
-    //         errores: errors.array()
-    //     });
-    // }
-    console.log(req.body);
     let {
         razonSocial,
         fantasieName,
@@ -46,12 +41,46 @@ exports.cargarCompania = async ( req, res ) => {
     }
 }
 
+exports.cargarSector = async ( req, res ) => {
+    let { idCompania, nombreSector } = req.body;
+    if(!idCompania || !nombreSector){
+        return res.status(404).json({
+            msg: 'Faltan datos'
+        });
+    }
+    try {
+        let sector = new SectorTrabajo(req.body);
+        await sector.save();
+        return res.status(200).json({
+            msg: '¡Sector creado con éxito!',
+            sector: sector
+        });
+    } catch (error) {
+        return res.status(404).json({
+            msg: 'An error ocurred in backend.'
+        });
+    }
+}
+
 exports.mostrarCompanias = async ( req, res ) => {
     try {
         const companias = await Companie.find({});
         res.status(200).json(companias);
     } catch (error) {
         res.status(400).json({msg: 'Error', error: error})
+    }
+}
+
+exports.mostrarSectores = async ( req, res ) => {
+    try {
+        const sectores = await SectorTrabajo.find({});
+        return res.status(200).json({sectores});
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({
+            msg: 'Error',
+            error: error
+        });
     }
 }
 
