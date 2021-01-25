@@ -7,4 +7,8 @@ router.get('/general',
     dataController.getGeneralData
 );
 
+router.post('/testing',
+    dataController.testing
+);
+
 module.exports = router;

@@ -2,11 +2,19 @@ const mongoose = require('mongoose');
 
 const sectorSchema = mongoose.Schema({
     nombreSector: {
-        type: String
+        type: String,
+        required: true
     },
     idCompania: {
         type: mongoose.Types.ObjectId,
-        ref: 'Companie'
+        ref: 'Companie',
+        required: true
+    },
+    nombreCompania: {
+        type: String
+    },
+    comentarios: {
+        type: String
     }
 });
 

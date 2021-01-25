@@ -36,6 +36,7 @@ router.post('/update',
 
 //Sectores, lugares, y puestos.
 
+//!         --SECTORES--         !//  
 router.get('/sectores',
     auth,
     companieController.mostrarSectores
@@ -43,6 +44,62 @@ router.get('/sectores',
 router.post('/sectores',
     auth,
     companieController.cargarSector
+);
+
+router.post('/sectores/edit',
+    auth,
+    companieController.editarSector
+);
+
+router.post('/sectores/delete',
+    auth,
+    companieController.eliminarSector
+);
+//!         --LUGARES--         !//  
+router.get('/lugares',
+    auth,
+    companieController.mostrarLugares
+);
+
+router.post('/lugares',
+    auth,
+    companieController.cargarLugar
+);
+
+router.post('/lugares/edit',
+    auth,
+    companieController.editarLugar
+);
+
+router.post('/lugares/delete',
+    auth,
+    companieController.eliminarLugar
+);
+//!         --PUESTOS--         !//  
+
+router.get('/puestos',
+    auth,
+    companieController.mostrarPuestos
+);
+
+router.post('/puestos',
+    auth,
+    companieController.cargarPuesto
+);
+
+router.post('/puestos/edit',
+    auth,
+    companieController.editarPuesto
+);
+
+router.post('/puestos/delete',
+    auth,
+    companieController.eliminarPuesto
+);
+
+router.post('/getData', 
+    auth,
+    companieController.getCompanieSecData
 );
 
 module.exports = router;

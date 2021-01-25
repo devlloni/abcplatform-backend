@@ -24,3 +24,7 @@ exports.getGeneralData = async ( req, res ) => {
         });
     }
 } 
+
+exports.testing = async ( req, res ) => {
+    console.log('asd');
+}

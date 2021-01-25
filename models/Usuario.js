@@ -4,7 +4,7 @@ const UsuarioSchema = mongoose.Schema({
 
     email:{
         type: String,
-        required: true,
+        // required: true,
         trim: true
     },
     password:{
@@ -66,14 +66,19 @@ const UsuarioSchema = mongoose.Schema({
         ref: 'Branchoffice'
     },
     lugar: {
-        type: String
+        type: mongoose.Types.ObjectId,
+        ref: 'LugarTrabajo'
     },
     sector: {
-        type: String
+        type: mongoose.Types.ObjectId,
+        ref: 'SectorTrabajo'
     },
     userRole:{
         type: mongoose.Types.ObjectId,
         ref: 'Role'
+    },
+    nroLegajo:{
+        type: Number
     }
 });
 

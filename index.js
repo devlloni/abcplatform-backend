@@ -14,6 +14,7 @@ conectarDB();
 app.get('/', (req, res) => {
   res.send('Hello World!')
 });
+
  //Something to change for example.
 //* RUTAS DE API
 app.use('/api/usuarios', require('./routes/users'));
