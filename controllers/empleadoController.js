@@ -4,20 +4,22 @@ const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 exports.crearEmpleado = async (req, res) =>{
-    const { email,password } = req.body;
-    console.log('Email: '+email, " password: "+password );
-    let usuario = await Usuario.findOne({email});
+    const { cuil } = req.body;
+    let usuario = await Usuario.findOne({cuil});
         if(usuario){
             return res.status(403).json({
-                msg: 'Email ya registrado'
+                msg: 'usuario con ese mismo cuil ya registrado'
             });
         }
     try{
         const insert = async ( ) => {
             usuario = new Usuario(req.body);
             usuario.createdAt = new Date();
-            const salt = await bcryptjs.genSalt(10);
-            usuario.password = await bcryptjs.hash(password, salt);
+            if(req.body.password){
+                const salt = await bcryptjs.genSalt(10);
+                usuario.password = await bcryptjs.hash(req.body.password, salt); 
+            }
+            
             usuario.save();
             return res.status(200).json({
                 msg: 'Usuario creado con éxito',
