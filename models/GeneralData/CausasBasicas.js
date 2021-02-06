@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const causasbasicasSchema = mongoose.Schema({
-    nombrecasusasbasicas: {
+    nombrecausasbasicas: {
         type: String
     }
 });

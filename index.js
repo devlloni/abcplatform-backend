@@ -26,7 +26,8 @@ app.use('/api/branchoffices', require('./routes/branchoffices'));
 app.use('/api/data', require('./routes/data'));
 //Roles
 app.use('/api/roles', require('./routes/role'));
-
+//General data
+app.use('/api/generaldata', require('./routes/generalData'));
 app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 });
