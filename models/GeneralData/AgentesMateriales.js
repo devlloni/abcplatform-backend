@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const formasaccidenteSchema = mongoose.Schema({
-    nombreaccidente: {
+const agentesMaterialesSchema = mongoose.Schema({
+    nombreagentematerial: {
         type: String
     }
 });
 
-module.exports = mongoose.model('FormasAccidente', formasaccidenteSchema);
+module.exports = mongoose.model('AgentesMateriales', agentesMaterialesSchema);

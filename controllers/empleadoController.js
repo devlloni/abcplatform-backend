@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 exports.crearEmpleado = async (req, res) =>{
-    const { cuil } = req.body;
+    const { cuil, lugar, sector } = req.body;
     let usuario = await Usuario.findOne({cuil});
         if(usuario){
             return res.status(403).json({
@@ -18,6 +18,12 @@ exports.crearEmpleado = async (req, res) =>{
             if(req.body.password){
                 const salt = await bcryptjs.genSalt(10);
                 usuario.password = await bcryptjs.hash(req.body.password, salt); 
+            }
+            if(!lugar){
+                usuario.lugar = null;
+            }
+            if(!sector){
+                usuario.sector = null;
             }
             
             usuario.save();

@@ -8,7 +8,7 @@ const conectarDB = require('./config/db');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json({extended: true}));
 app.use(cors());
-//! CONECCCION CON BASE DE DATOS
+//! CONEXION CON BASE DE DATOS
 conectarDB();
 
 app.get('/', (req, res) => {
@@ -26,7 +26,10 @@ app.use('/api/branchoffices', require('./routes/branchoffices'));
 app.use('/api/data', require('./routes/data'));
 //Roles
 app.use('/api/roles', require('./routes/role'));
+//General data
+app.use('/api/generaldata', require('./routes/generalData'));
 
+//
 app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 });
