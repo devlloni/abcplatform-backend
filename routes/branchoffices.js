@@ -23,6 +23,16 @@ router.get('/',
     branchofficeController.mostrarBranchoffices
 );
 
+router.get('/:id',
+    auth,
+    branchofficeController.getSucursalId
+);
+
+router.get('/companie/:companieId',
+    auth,
+    branchofficeController.getSucursalIdCompanie
+);
+
 router.post('/update', 
     auth, 
     branchofficeController.editarSucursal

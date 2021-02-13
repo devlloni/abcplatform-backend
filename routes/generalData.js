@@ -105,19 +105,19 @@ router.get('/formasaccidente',
 );
 
 //!post
-router.post('/formasaccidiente',
+router.post('/formasaccidente',
     auth,
     generalDataController.postFormaAccidente
 );
 
 //!post
-router.post('/formasaccidiente/edit',
+router.post('/formasaccidente/edit',
     auth,
     generalDataController.editarFormaAccidente
 );
 
 //!post 
-router.post('/formasaccidiente/delete',
+router.post('/formasaccidente/delete',
     auth,
     generalDataController.deleteFormaAccidente
 );
