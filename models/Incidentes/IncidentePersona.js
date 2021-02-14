@@ -92,6 +92,10 @@ const incidentepersona = mongoose.Schema({
         type:Date,
         required: true
     },
+    diasbaja:{
+        type: Date,
+        required: true
+    },
     //falta declarar diasbaja, este campo debe mostrar y guardar la cantidad de dìas que pasaron entre 
     //la fecha de accidente y la fecha de alta
     recalificacion: {

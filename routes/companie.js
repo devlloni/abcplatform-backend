@@ -35,6 +35,11 @@ router.post('/update',
 );
 
 //Sectores, lugares, y puestos.
+//? All
+router.get('/dataByCompanie/:idCompanie',
+    auth,
+    companieController.getLugarAndSectorCompanie
+);
 
 //!         --SECTORES--         !//  
 router.get('/sectores',

@@ -582,3 +582,13 @@ exports.deleteZonaCuerpoAfectada = async ( req, res ) => {
         });
     }
 }
+
+exports.getGeneralDataByCompanie = async ( req, res ) => {
+    const { companieId } = req.params;
+    // if(!companieId){
+    //     return res.status(403).json({msg: 'Error, no companie ID.'});
+    // }
+
+    // const data = 
+    //     Lugares
+}
