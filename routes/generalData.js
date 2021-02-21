@@ -173,5 +173,9 @@ router.post('/zonacuerpoafectada/delete',
     generalDataController.deleteZonaCuerpoAfectada
 );
 
+router.get('/allData',
+    auth,
+    generalDataController.getGeneralData
+);
 
 module.exports = router;

@@ -381,3 +381,28 @@ exports.getCompanieSecData = async  ( req, res ) => {
         puestos: puestos
     });
 }
+exports.getLugarAndSectorCompanie = async ( req, res ) => {
+    const { idCompanie } = req.params;
+    if(!idCompanie){
+        return res.status(403).json({msg: 'Forbidden'});
+    }else{
+        let results = {
+            lugares: [],
+            puestos: [],
+            sectores: []
+        };
+        let lugares = await LugarTrabajo.find({idCompania: idCompanie});
+        if(lugares.length > 0){
+            results.lugares.push(lugares);
+        }
+        let puestos = await PuestoTrabajo.find({idCompania: idCompanie});
+        if(puestos.length > 0){
+            results.puestos.push(puestos);
+        }
+        let sectores = await SectorTrabajo.find({idCompania: idCompanie});
+        if(sectores.length > 0){
+            results.sectores.push(sectores);
+        }
+        return res.status(200).json(results);
+    }
+}

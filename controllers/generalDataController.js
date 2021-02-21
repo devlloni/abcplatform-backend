@@ -582,3 +582,20 @@ exports.deleteZonaCuerpoAfectada = async ( req, res ) => {
         });
     }
 }
+
+exports.getGeneralData = async ( req, res ) => {
+    let formas = await FormasAccidente.find();
+    let agentesmateriales = await AgentesMateriales.find();
+    let naturaleza = await NaturalezaLesion.find();
+    let zonacuerpo = await ZonaCuerpoAfectada.find();
+
+    let allData = {
+        formas,
+        agentesmateriales,
+        naturaleza,
+        zonacuerpo
+    };
+
+    return res.status(200).json(allData);
+
+}
