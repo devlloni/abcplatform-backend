@@ -73,7 +73,7 @@ exports.getSucursalIdCompanie = async ( req, res ) => {
         if(branchoffices){
             return res.status(200).json({branchoffices});
         }else{
-            return res.status(200).json([]);
+            return res.status(200).json({branchoffices: []});
         }
     } catch (error) {
         return res.status(403).json({msg: 'error'});
