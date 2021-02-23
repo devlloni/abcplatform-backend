@@ -1,52 +1,37 @@
 const mongoose = require('mongoose');
 
 const IncidentePropiedadSchema = mongoose.Schema({
-    
-    usuario: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario'
-    },
-    companie: {
+
+    compania: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Companie'
-    },
-    sucursal: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Branchoffice'
     },
     lugar: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'LugarTrabajo'
     },
+    sucursal: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Branchoffice'
+    },
     sector: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'sectorTrabajo'
+        ref: 'SectorTrabajo'
     },
-    fecha: {
-    type:Date,
-    require: true
+    titulo: {
+        type: String
     },
-    hora: {
-        type:Date,
-        require: true
+    tipoIncidente: {
+        type: String,
+        enum: ['Ambiente', 'Propiedad']
     },
-    fecha: {
-        type:Date,
-        require: true
-     },
-     titulo: {
-        type:string,
-        require: true
-    },
-    
     gravedad: {
-        type:string,
-        enum: ['Sin daño', 'Leve', 'Moderado', 'Mayor', 'Catastrófico'],
-        require: true
+        type: String,
+        enum: ['Sin daño', 'Leve', 'Moderado', 'Mayor', 'Catastrofico']
     },
-    investigacionincidente: {
-        type:Datestring,
-        require: true
+    investigacion: {
+        type: String
     }
-    });
-    module.exports = mongoose.model('IncidentePropiedad', IncidentePropiedadSchema);
+});
+
+module.exports = mongoose.model('IncidentePropiedad', IncidentePropiedadSchema);
