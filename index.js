@@ -29,6 +29,7 @@ app.use('/api/roles', require('./routes/role'));
 //General data
 app.use('/api/generaldata', require('./routes/generalData'));
 app.use('/api/incidentespropiedad', require('./routes/incidentesPropiedad'))
+app.use('/api/incidentespersona', require('./routes/incidentespersona'));
 //
 app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)

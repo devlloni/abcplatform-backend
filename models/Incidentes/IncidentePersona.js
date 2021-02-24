@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const incidentepersona = mongoose.Schema({
+const IncidentePersona = mongoose.Schema({
     //datos
     usuario: {
         type: mongoose.Schema.Types.ObjectId,
@@ -56,11 +56,11 @@ const incidentepersona = mongoose.Schema({
         ref: 'LugarTrabajo'
     },
     horaingreso: {
-        type: Date,
+        type: String,
         required: true
     },
-    horaaccidente: {
-        type: Date,
+    horaincidente: {
+        type: String,
         required: true
     },
     gravedad: {
@@ -124,11 +124,11 @@ const incidentepersona = mongoose.Schema({
 
     titulo: {
         type: String,
-        required:true
+        //required:true
     },
     investigacion:{
         type:String,
-        required: true
+        //required: true
     },
     // analisis. Formas del accdidente
     causainmediata:{
@@ -143,10 +143,10 @@ const incidentepersona = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CausasGestion'
     },
-    casuasraiz:{
+    causasraiz:{
         type:String,
-        required: true
+        // required: true
     },
 });
 
-module.exports = mongoose.model('IncidentePersona', incidentepersonaSchema);
+module.exports = mongoose.model('IncidentePersona', IncidentePersona);
