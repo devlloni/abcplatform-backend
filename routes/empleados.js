@@ -18,4 +18,14 @@ router.post('/update',
     empleadoController.editarEmpleado
 );
 
+router.get('/',
+    auth,
+    empleadoController.getEmpleados
+);
+
+router.get('/:id',
+    auth,
+    empleadoController.getEmpleado
+);
+
 module.exports = router;

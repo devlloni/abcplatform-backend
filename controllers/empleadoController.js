@@ -3,6 +3,29 @@ const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
+exports.getEmpleados = async ( req, res ) => {
+    
+        let empleados = await Usuario.find({});
+        return res.status(200).json(empleados);
+   
+}
+
+exports.getEmpleado = async ( req, res ) => {
+    const { id } = req.params;
+    if(!id){
+        return res.status(403).json({
+            msg: 'No id parsed'
+        });
+    }
+        let empleado = await Usuario.find({_id: id});
+        if(!empleado) return res.status(203).json({
+            msg: 'Not found',
+            code: 0
+        });
+        return res.status(200).json(empleado);
+   
+}
+
 exports.crearEmpleado = async (req, res) =>{
     const { cuil, lugar, sector } = req.body;
     let usuario = await Usuario.findOne({cuil});
