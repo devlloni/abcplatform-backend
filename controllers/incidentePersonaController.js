@@ -5,6 +5,18 @@ exports.getIncidentes = async ( req, res ) => {
     return res.status(200).json(incidentes);
 }
 
+exports.getIncidenteId = async ( req, res ) => {
+    if(req.params.id){
+        let { id } = req.params;
+        let incidente = await IncidentePersona.find({_id: id})
+        return res.status(200).json({incidente});
+    }else{
+        return res.status(403).json({
+            msg: 'no id'
+        });
+    }
+}
+
 exports.postIncidente = async ( req, res ) => {
     const { usuario, compania, puesto, lugar, denuncia, tipo, numerosiniestro, fechadenuncia, 
         fechaincidente, horaincidente, gravedad, horaingreso, sector, turno, jefeacargo, testigos,

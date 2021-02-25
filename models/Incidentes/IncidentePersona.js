@@ -18,11 +18,11 @@ const IncidentePersona = mongoose.Schema({
     // codigo: debe ser un código que se genere de forma automatica cada vez que se guarda un incidente
     // va a contener numeros y letras.
     // direccion de la empresa: se toma de la tabla companie
-
+    codigo: String,
     //general
     denuncia: {
         type: String,
-        enum:['Denunciado', 'No Denunciado', 'Autodenuncia'],
+        enum:['Denunciado', 'No denunciado', 'Autodenuncia'],
         required: true
         
     },
@@ -41,7 +41,9 @@ const IncidentePersona = mongoose.Schema({
         required: true
     },
     // falta agregar ART, dato que se trae de companie
-
+    numerosiniestro: {
+        type: Number
+    },
     //Accidente (incidente)
     fechaincidente: {
         type: Date,
@@ -93,8 +95,8 @@ const IncidentePersona = mongoose.Schema({
         required: true
     },
     diasbaja:{
-        type: Date,
-        required: true
+        type: Number,
+        // required: true
     },
     //falta declarar diasbaja, este campo debe mostrar y guardar la cantidad de dìas que pasaron entre 
     //la fecha de accidente y la fecha de alta
@@ -131,7 +133,7 @@ const IncidentePersona = mongoose.Schema({
         //required: true
     },
     // analisis. Formas del accdidente
-    causainmediata:{
+    causasinmediatas:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CausasInmediatas'
     },

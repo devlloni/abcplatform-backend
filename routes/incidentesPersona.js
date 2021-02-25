@@ -8,6 +8,11 @@ router.get('/',
     IPController.getIncidentes
 );
 
+router.get('/:id',
+    auth,
+    IPController.getIncidenteId
+);
+
 router.post('/',
     auth,
     IPController.postIncidente
