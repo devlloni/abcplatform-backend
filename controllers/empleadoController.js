@@ -28,12 +28,7 @@ exports.getEmpleado = async ( req, res ) => {
 
 exports.crearEmpleado = async (req, res) =>{
     const { cuil, lugar, sector } = req.body;
-    let usuario = await Usuario.findOne({cuil});
-        if(usuario){
-            return res.status(403).json({
-                msg: 'usuario con ese mismo cuil ya registrado'
-            });
-        }
+    
     try{
         const insert = async ( ) => {
             usuario = new Usuario(req.body);

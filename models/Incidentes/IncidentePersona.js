@@ -114,15 +114,16 @@ const IncidentePersona = mongoose.Schema({
         ref: 'AgentesMateriales'
     },
     // Diagnostico 1
+    diagnosticos: Array, // ABC-31
 
-    naturaleza:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'NaturalezaLesion'
-    },
-    zonacuerpo:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ZonaCuerpoAfectada'
-    },
+    // naturaleza:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'NaturalezaLesion'
+    // },
+    // zonacuerpo:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'ZonaCuerpoAfectada'
+    // },
 
     titulo: {
         type: String,
@@ -136,6 +137,9 @@ const IncidentePersona = mongoose.Schema({
     causasinmediatas:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CausasInmediatas'
+    },
+    descripcioncausainmediata:{
+        type: String
     },
     causasbasicas:{
         type: mongoose.Schema.Types.ObjectId,

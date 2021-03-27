@@ -15,11 +15,21 @@ exports.getIncidentesPropiedadId = async ( req, res ) => {
             msg: 'no id'
         });
     }
-    
+}
+
+exports.deleteIncidente = async ( req, res ) => {
+    const { id } = req.body;
+    if(!id){
+        return res.status(403).json({
+            msg: 'No ID parsed'
+        });
+    }
+    let deleteit = await IncidentePropiedad.findByIdAndDelete(id);
+    return res.status(200).json(deleteit);
 }
 
 exports.postIncidentePropiedad = async ( req, res ) => {
-    const { empresa, lugar, sucursal, sector, titulo, tipoIncidente, gravedad, investigacion} = req.body;
+    const { empresa, lugar, sucursal, sector, titulo, tipoIncidente, gravedad, investigacion, imagenes, files} = req.body;
     if(!empresa){
         return res.status(203).json({
             msg: 'Error, no hay empresa asignada.'
@@ -38,7 +48,9 @@ exports.postIncidentePropiedad = async ( req, res ) => {
                 titulo: titulo,
                 tipoIncidente: tipoIncidente,
                 gravedad: gravedad,
-                investigacion: investigacion
+                investigacion: investigacion,
+                ...(imagenes && {imagenes: imagenes}),
+                ...(files && {files: files}),
             }
             try {
                 let incidente = new IncidentePropiedad(format);

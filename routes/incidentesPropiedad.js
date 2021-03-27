@@ -18,4 +18,9 @@ router.post('/',
     incPropController.postIncidentePropiedad
 );
 
+router.post('/delete',
+    auth,
+    incPropController.deleteIncidente
+);
+
 module.exports = router;

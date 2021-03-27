@@ -30,6 +30,8 @@ app.use('/api/roles', require('./routes/role'));
 app.use('/api/generaldata', require('./routes/generalData'));
 app.use('/api/incidentespropiedad', require('./routes/incidentesPropiedad'))
 app.use('/api/incidentespersona', require('./routes/incidentespersona'));
+app.use('/api/imagenes/', require('./routes/uploadImage'));
+app.use('/api/files/', require('./routes/uploadFile'));
 //
 app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)

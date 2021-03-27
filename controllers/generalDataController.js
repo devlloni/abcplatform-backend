@@ -588,12 +588,18 @@ exports.getGeneralData = async ( req, res ) => {
     let agentesmateriales = await AgentesMateriales.find();
     let naturaleza = await NaturalezaLesion.find();
     let zonacuerpo = await ZonaCuerpoAfectada.find();
+    let causasbasicas = await CausasBasicas.find();
+    let causasgestion = await CausasGestion.find();
+    let causasinmediatas = await CausasInmediatas.find();
 
     let allData = {
         formas,
         agentesmateriales,
         naturaleza,
-        zonacuerpo
+        zonacuerpo,
+        causasbasicas,
+        causasgestion,
+        causasinmediatas
     };
 
     return res.status(200).json(allData);

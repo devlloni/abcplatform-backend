@@ -63,7 +63,8 @@ const UsuarioSchema = mongoose.Schema({
     },
     branchoffice: {
         type: mongoose.Types.ObjectId,
-        ref: 'Branchoffice'
+        ref: 'Branchoffice',
+        required: false
     },
     lugar: {
         type: mongoose.Types.ObjectId,

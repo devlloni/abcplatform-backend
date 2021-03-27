@@ -12,7 +12,6 @@ exports.autenticarUsuario = async ( req, res ) => {
         });
     }
     const { email, password } = req.body;
-    console.log('Enviado: '+ email, password);
     try {
         //Revisar q sea un usuario registrado
         let usuario = await Usuario.findOne({email});

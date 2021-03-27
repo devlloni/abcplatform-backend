@@ -31,6 +31,12 @@ const IncidentePropiedadSchema = mongoose.Schema({
     },
     investigacion: {
         type: String
+    },
+    imagenes: {
+        type: Array
+    },
+    files: {
+        type: Array
     }
 });
 

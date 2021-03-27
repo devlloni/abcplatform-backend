@@ -18,4 +18,14 @@ router.post('/',
     IPController.postIncidente
 );
 
+router.put('/:id',
+    auth, 
+    IPController.updateIncidente
+);
+
+router.post('/delete',
+    auth,
+    IPController.deleteIncidente
+);
+
 module.exports = router;
