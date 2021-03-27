@@ -40,3 +40,28 @@ exports.postIncidente = async ( req, res ) => {
             });
         }
 }
+
+exports.deleteIncidente = async ( req, res ) => {
+    const { id } = req.body;
+    if(!id){
+        return res.status(403).json({
+            msg: 'No ID parsed'
+        });
+    }
+    let deleteit = await IncidentePersona.findByIdAndDelete(id);
+    return res.status(200).json(deleteit);
+}
+
+
+exports.updateIncidente = async ( req, res ) => {
+    const { id } = req.params;
+    console.log(id);
+    console.log(req.body);
+    // if(!id){
+    //     return res.status(403).json({
+    //         msg: 'No ID parsed'
+    //     });
+    // }
+    // let updated = await IncidentePersona.findByIdAndUpdate(id, req.body);
+    // return res.status(200).json(updated);
+}
