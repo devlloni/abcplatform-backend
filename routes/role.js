@@ -5,4 +5,12 @@ router.get('/',
     roleController.getRoles
 );
 
+router.get('/test',
+    (req,res)=>{
+        res.status(200).json({
+            mensaje: 'Hola, salio todo ok!!!'
+        });
+    }
+)
+
 module.exports = router;
