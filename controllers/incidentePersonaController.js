@@ -2,6 +2,7 @@ const IncidentePersona = require('../models/Incidentes/IncidentePersona');
 const moment = require('moment');
 exports.getIncidentes = async ( req, res ) => {
     let incidentes = await IncidentePersona.find({});
+    console.log(req);
     return res.status(200).json(incidentes);
 }
 

@@ -153,6 +153,12 @@ const IncidentePersona = mongoose.Schema({
         type:String,
         // required: true
     },
+    imagenes: {
+        type: Array
+    },
+    files: {
+        type: Array
+    }
 });
 
 module.exports = mongoose.model('IncidentePersona', IncidentePersona);

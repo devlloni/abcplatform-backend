@@ -20,6 +20,7 @@ exports.cargarCompania = async ( req, res ) => {
         emailCompanie,
         phoneCompanie
     } = req.body;
+    console.log(req.body);
     try {
         let companie = await Companie.findOne({cuitCompanie});
         if(companie)
